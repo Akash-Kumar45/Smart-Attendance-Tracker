@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style type="text/css">
+  body {
+    background-image: url("/static/images/student_dashboard.jpg")
+  }
+</style>
+          <div class="col-md-12">
+            <div class="card" style="background-color: rgb(255, 205, 255);">
+              <div class="card-header flexcontainer">
+                {% if datelabel == "Today's" %}
+                  <h4 class="card-title text-center itemcenter">Today's Attendance</h4>
+                {% else %}
+                  <h4 class="card-title text-center itemcenter">Attendance - {{ datelabel }}</h4>
+                {% endif %}
+                
+                <form method="post" class="itemright">
+                  {{ form.hidden_tag() }}
+                  {{ form.dt(class="dtpick") }}
+                  <button type="submit">Go</button>
+                </form>
+              </div>
+              <div class="card-body">
+                {% if attendance|length %}
+                  <hr>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Roll No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Marked Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in attendance %}
+                      <tr>
+                        <td>{{ a[1] }}</td>
+                        <td>{{ a[2] }}</td>
+                        <td>{{ a[4] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                {% else %}
+                  <h5 class="text text-danger">No Records Available</h5>
+                {% endif %}
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}
