@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style type="text/css">
+  body {
+    background-image: url("/static/images/register.jpg")
+  }
+</style>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header" style="background-color: aquamarine;">
+                <h4 class="text-center">Register a student</h4>
+              </div>
+              <div class="card-body" style="background-color: rgb(192, 255, 252);">
+
+                <div class="text-center">
+                  {% if not session.img_captured %}
+                  <p class="text-muted">
+                    Instructions:<br>
+                    1. Click on the button below to open the camera.<br>
+                    2. Press <strong>'C'</strong> to capture the Image.
+                  </p>
+                  {% endif %}
+                  {% if temp_pic and session.img_captured %}
+                    <img src="{{ url_for('static', filename='images/users/temp.jpg') }}?xxx={{session.dt}}" height="300" width="300">
+                  {% else %}
+                    <img src="{{ url_for('static', filename='images/no-image.png') }}?xxx={{ session.dt }}" height="300" width="300">
+                  {% endif %}
+                  <p class="text-muted">Student Image</p>
+                  {% if not session.img_captured %}
+                  <a href="/capture_image" class="btn btn-lg btn-warning">
+                    Open Camera
+                  </a>
+                  {% endif %}
+                </div>
+                <br><br>
+                {% if session.img_captured %}
+                  <form method="POST">
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="inputName">Name</label>
+                        <input type="text" name='name' class="form-control" placeholder="Enter student name" id="inputName" required>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputRoll">Enrollment No.</label>
+                        <input type="number" name='rollno' class="form-control" placeholder="Enter student roll no" id="inputRoll" required>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="Password" required>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register Student</button>
+                  </form>
+                {% endif %}
+
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}
