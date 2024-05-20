@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style type="text/css">
+  body {
+    background-image: url("/static/images/2_1.jpg");
+    background-size: cover;
+
+  }
+</style>
+          <div class="col-md-12">
+            <div class="card" style="background-color: rgb(212, 251, 255);">
+              <div class="card-header">
+                <h4 class="text-center">My Profile</h4>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="card" style="background-color: rgb(126, 249, 255);">
+                      <div class="card-body">
+                        <h5 class="card-title">Student Name <i class="fa fa-user" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ student[2] }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="card" style="background-color: rgb(126, 249, 255);">
+                      <div class="card-body">
+                        <h5 class="card-title">Student Enrollment No. <i class="fa fa-hashtag" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ student[1] }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br/>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="card" style="background-color: rgb(126, 249, 255);">
+                      <div class="card-body">
+                        <h5 class="card-title">Email <i class="fa fa-envelope" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ student[3] }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}
