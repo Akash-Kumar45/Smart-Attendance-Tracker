@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style type="text/css">
+  body {
+    background-image: url("/static/images/reg_bg.jpg");
+    background-size: cover;
+  }
+</style>
+          <div class="col-md-12">
+            <div class="card" style="background-color: rgb(205, 167, 255);">
+              <div class="card-header">
+                <h4 class="card-title">Welcome {{ session.uname }}</h4>
+              </div>
+              <div class="card-body">
+                <h5>Student Dashboard</h5>
+                <br>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="card" style="background-color: rgb(246, 216, 255);">
+                      <div class="card-body">
+                        <h5 class="card-title">Total Attendance <i class="fa fa-clock" aria-hidden="true"></i></h5>
+                        <p class="card-text">{{ att_count }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  {% if session.pic_path %}
+                    <img src="{{session.pic_path}}" height="200" width="200">
+                  {% else %}
+                    <img src="static/images/no-image.png" height="200" width="200">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}
