@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block body %}
+<style type="text/css">
+  body {
+    background-image: url("/static/images/three.jpg");
+    background-size: cover;
+    
+  }
+</style>
+          <div class="col-md-12">
+            <div class="card" style="background-color: rgb(189, 244, 255);">
+              <div class="card-header">
+                <h4 class="card-title text-center">List of Students</h4>
+              </div>
+              <div class="card-body">
+                {% if students|length %}
+                  <hr>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Roll No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Registered Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in students %}
+                      <tr>
+                        <td>{{ a[1] }}</td>
+                        <td>{{ a[2] }}</td>
+                        <td>{{ a[3] }}</td>
+                        <td>{{ a[6] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                {% else %}
+                  <h5 class="text text-danger">No Records Available</h5>
+                {% endif %}
+              </div>
+              <div class="card-footer text-muted">
+              </div>
+            </div>
+          </div>
+{% endblock %}
